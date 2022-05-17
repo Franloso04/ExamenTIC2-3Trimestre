@@ -35,18 +35,24 @@ def guardaasignatura(asignaturas):
 #Ejercicio 4
 def borrarasig(asignaturas):
     borrar=input("Que asignatura quieres borrar")
-    asignaturas.remove(borrar)
+    try:
+        asignaturas.remove(borrar)
+        return True
+    except:
+        return False 
+
+
 #fin 4
 #Ejercicio 5
 def numAle():
     numale = []
-    numNotas = int(input("¿Cuantas notas tienes?"))
+    numNotas = int(input("¿Cuantas asignaturas tienes y te hago la media ?"))
     num = 0
 
     for i in range(0, numNotas):
         num = random.randint(0, 10)
         numale.append(num)
-    
+   
     return numale
 #Finejercicio5
 
@@ -56,14 +62,35 @@ def calcmedia():
     total = 0
     contador = 0
 
-    for i in numAle:
+    for i in numale:
         total = total + i
         contador = contador + 1
     
     media = total / contador
-    
+    print(media)
     return media
+#fin ej 6
+#ejercicio 7
+def verlista(asignaturas):
+    print(" *********** Asignaturas matriculadas **************")
+    contador = 0
 
+    for i in asignaturas:
+        contador = contador + 1
+    
+    for i in range(0, contador):
+        print(i+1, "-", asignaturas[i])
+    print("*********** Fin asignaturas matriculadas **************")
+  
+#fi ejercico 7
+
+#Ejercicio 8
+
+
+    
+
+
+#Fin ejercicio 8
     
     
 
@@ -71,8 +98,13 @@ def calcmedia():
 # ---- Programa principal -----
 
 #Ejercicio 2
+
+
 asignaturas=[]
 opc=mostrarmenu()
+
+
+
 while (opc>0) and (opc<6):
     if opc==1:
         guardaasignatura(asignaturas)
@@ -81,9 +113,9 @@ while (opc>0) and (opc<6):
         borrarasig(asignaturas)
 
     if opc==3:
-        print("si")
+       calcmedia()
     if opc==4:
-        print ("si")
+        verlista(asignaturas)
 
     if opc==5:
         print("SALIENDO...")
